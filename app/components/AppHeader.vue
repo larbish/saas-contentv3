@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content'
+// import type { NavItem } from '@nuxt/content'
 
-const navigation = inject<Ref<NavItem[]>>('navigation', ref([]))
+// const navigation = inject<Ref<any[]>>('navigation', ref([]))
 
 const links = [{
   label: 'Docs',
@@ -41,11 +41,11 @@ const links = [{
       />
     </template>
 
-    <template #panel>
+    <!-- <template #panel>
       <UNavigationTree
         :links="mapContentNavigation(navigation)"
         default-open
       />
-    </template>
+    </template> -->
   </UHeader>
 </template>

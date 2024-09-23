@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content'
-
-const navigation = inject<Ref<NavItem[]>>('navigation', ref([]))
-
-const links = computed(() => navigation.value.find(item => item._path === '/docs')?.children ?? [])
+const { data: navigation } = await useAsyncData('docs-navigation', () => getCollectionNavigation('docs'), { default: () => [] })
 </script>
 
 <template>
@@ -12,13 +8,13 @@ const links = computed(() => navigation.value.find(item => item._path === '/docs
       <template #left>
         <UAside>
           <template #top>
-            <UContentSearchButton
+            <!-- <UContentSearchButton
               class="rounded-md"
               size="sm"
-            />
+            /> -->
           </template>
 
-          <UNavigationTree :links="mapContentNavigation(links)" />
+          <UNavigationTree :links="mapContentNavigation(navigation)" />
         </UAside>
       </template>
 

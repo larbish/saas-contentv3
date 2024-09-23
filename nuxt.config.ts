@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
   modules: [
+    '@farnabaz/content-next',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',

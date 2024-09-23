@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
+// import type { ParsedContent } from '@nuxt/content'
 import type { NuxtError } from '#app'
 
 useSeoMeta({
@@ -20,10 +20,10 @@ useHead({
   }
 })
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation(), { default: () => [] })
-const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', { default: () => [], server: false })
+// const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation(), { default: () => [] })
+// const { data: files } = useLazyFetch<any[]>('/api/search.json', { default: () => [], server: false })
 
-provide('navigation', navigation)
+// provide('navigation', navigation)
 </script>
 
 <template>
@@ -41,10 +41,10 @@ provide('navigation', navigation)
     <AppFooter />
 
     <ClientOnly>
-      <LazyUContentSearch
+      <!-- <LazyUContentSearch
         :files="files"
         :navigation="navigation"
-      />
+      /> -->
     </ClientOnly>
 
     <UNotifications />

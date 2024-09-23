@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { withoutTrailingSlash } from 'ufo'
-
 const route = useRoute()
 
-const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+const { data: page } = await useAsyncData(route.path, () => queryCollection('docs').path(`/${route.params.slug}`).first())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('/docs')
-  .where({ _extension: 'md', navigation: { $ne: false } })
-  .only(['title', 'description', '_path'])
-  .findSurround(withoutTrailingSlash(route.path))
-, { default: () => [] })
+const { data: surround } = await useAsyncData('surround' + route.params.slug, () => {
+  return getSurroundingCollectionItems('docs', `/${route.params.slug}`, {
+    before: 1,
+    after: 1
+  })
+})
 
 useSeoMeta({
   title: page.value.title,
@@ -21,13 +20,13 @@ useSeoMeta({
   ogDescription: page.value.description
 })
 
-defineOgImage({
-  component: 'Saas',
-  title: page.value.title,
-  description: page.value.description
-})
+// defineOgImage({
+//   component: 'Saas',
+//   title: page.value.title,
+//   description: page.value.description
+// })
 
-const headline = computed(() => findPageHeadline(page.value!))
+// const headline = computed(() => findPageHeadline(page.value!))
 </script>
 
 <template>
@@ -35,14 +34,12 @@ const headline = computed(() => findPageHeadline(page.value!))
     <UPageHeader
       :title="page.title"
       :description="page.description"
-      :links="page.links"
-      :headline="headline"
     />
 
     <UPageBody prose>
-      <ContentRenderer
-        v-if="page.body"
-        :value="page"
+      <MDCRenderer
+        v-if="page"
+        :body="page.body"
       />
 
       <hr v-if="surround?.length">
@@ -50,11 +47,11 @@ const headline = computed(() => findPageHeadline(page.value!))
       <UContentSurround :surround="surround" />
     </UPageBody>
 
-    <template
+    <!-- <template
       v-if="page.toc !== false"
       #right
     >
       <UContentToc :links="page.body?.toc?.links" />
-    </template>
+    </template> -->
   </UPage>
 </template>

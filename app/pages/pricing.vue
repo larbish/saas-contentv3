@@ -1,21 +1,21 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('pricing', () => queryContent('/pricing').findOne())
-if (!page.value) {
+const { data: page } = await useAsyncData('pricing', () => queryCollection('pricing').first())
+if (!page) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-useSeoMeta({
-  title: page.value.title,
-  ogTitle: page.value.title,
-  description: page.value.description,
-  ogDescription: page.value.description
-})
+// useSeoMeta({
+//   title: page.value.title,
+//   ogTitle: page.value.title,
+//   description: page.value.description,
+//   ogDescription: page.value.description
+// })
 
-defineOgImage({
-  component: 'Saas',
-  title: page.value.title,
-  description: page.value.description
-})
+// defineOgImage({
+//   component: 'Saas',
+//   title: page.value.title,
+//   description: page.value.description
+// })
 
 const isYearly = ref(false)
 </script>
