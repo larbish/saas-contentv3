@@ -4,7 +4,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@farnabaz/content-next',
-    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/image',
