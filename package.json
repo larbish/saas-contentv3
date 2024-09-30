@@ -21,7 +21,7 @@
     "@nuxt/ui-pro": "^1.4.1",
     "@vueuse/nuxt": "^10.11.1",
     "nuxt": "^3.12.4",
-    "nuxt-og-image": "^3.0.0-rc.65"
+    "nuxt-og-image": "^3.0.4"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.5.1",
@@ -30,6 +30,6 @@
     "vue-tsc": "^2.0.29"
   },
   "resolutions": {
-    "@farnabaz/content-next": "1.32.0"
+    "@farnabaz/content-next": "3.1.0-20240930-111108-c719cb0"
   }
 }

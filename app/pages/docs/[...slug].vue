@@ -6,12 +6,13 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const { data: surround } = await useAsyncData('surround' + route.params.slug, () => {
-  return getSurroundingCollectionItems('docs', `/${route.params.slug}`, {
-    before: 1,
-    after: 1
-  })
-})
+// TODO fix surround
+// const { data: surround } = await useAsyncData('surround' + route.params.slug, () => {
+//   return getSurroundingCollectionItems('docs', `/${route.params.slug}`, {
+//     before: 1,
+//     after: 1
+//   })
+// })
 
 useSeoMeta({
   title: page.value.title,
@@ -20,13 +21,15 @@ useSeoMeta({
   ogDescription: page.value.description
 })
 
-// defineOgImage({
-//   component: 'Saas',
-//   title: page.value.title,
-//   description: page.value.description
-// })
+defineOgImageComponent(
+  'OgImageSaas',
+  {
+    title: page.value.title,
+    description: page.value.description
+  }
+)
 
-// const headline = computed(() => findPageHeadline(page.value!))
+const headline = computed(() => findPageHeadline(page.value))
 </script>
 
 <template>
@@ -34,6 +37,8 @@ useSeoMeta({
     <UPageHeader
       :title="page.title"
       :description="page.description"
+      :links="page.links"
+      :headline="headline"
     />
 
     <UPageBody prose>
@@ -42,16 +47,16 @@ useSeoMeta({
         :body="page.body"
       />
 
-      <hr v-if="surround?.length">
+      <!-- <hr v-if="surround?.length">
 
-      <UContentSurround :surround="surround" />
+      <UContentSurround :surround="surround" /> -->
     </UPageBody>
 
-    <!-- <template
+    <template
       v-if="page.toc !== false"
       #right
     >
       <UContentToc :links="page.body?.toc?.links" />
-    </template> -->
+    </template>
   </UPage>
 </template>

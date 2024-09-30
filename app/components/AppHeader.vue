@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import type { NavItem } from '@nuxt/content'
 
+// TODO Global nav
 // const navigation = inject<Ref<any[]>>('navigation', ref([]))
 
 const links = [{

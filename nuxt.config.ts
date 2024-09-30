@@ -23,6 +23,12 @@ export default defineNuxtConfig({
     }
   },
 
+  // https://nuxtseo.com/og-image/getting-started/installation
+  site: {
+    // production URL
+    url: 'https://saas-template.nuxt.dev'
+  },
+
   colorMode: {
     disableTransition: true
   },

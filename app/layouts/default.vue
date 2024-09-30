@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // const { data: files } = useLazyFetch<any[]>('/api/search.json', { default: () => [], server: false })
 
+// TODO Global nav
 // provide('navigation', navigation)
 </script>
 

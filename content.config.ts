@@ -34,7 +34,7 @@ export const collections = {
     schema: z.object({ // schema is required with data type
       slug: z.string(),
       name: z.string(),
-      // to: z.string(),
+      to: z.string(),
       avatar: z.object({
         src: z.string(),
         alt: z.string()
@@ -48,7 +48,7 @@ export const collections = {
       hero: z.object({
         title: z.string(),
         description: z.string(),
-        align: z.string()
+        align: z.enum(['left', 'center', 'right'])
       }),
       plans: z.array(
         z.object({

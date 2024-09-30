@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { fetchPosts } = usePosts()
 
-const { data: page } = await useAsyncData('blog', () => queryCollection('blog').first())
+const { data: page } = await useAsyncData('posts', () => queryCollection('blog').first())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
