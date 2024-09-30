@@ -45,14 +45,14 @@ if (post.value.image?.src) {
     twitterImage: url
   })
 } else {
-  defineOgImageComponent(
-    'OgImageSaas',
-    {
-      title,
-      description,
-      headline: 'Blog'
-    }
-  )
+  // defineOgImageComponent(
+  //   'OgImageSaas',
+  //   {
+  //     title,
+  //     description,
+  //     headline: 'Blog'
+  //   }
+  // )
 }
 </script>
 
