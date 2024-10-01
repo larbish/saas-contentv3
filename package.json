@@ -12,12 +12,13 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@farnabaz/content-next": "nightly",
     "@iconify-json/heroicons": "^1.1.24",
     "@iconify-json/simple-icons": "^1.1.114",
-    "@farnabaz/content-next": "^1.31.0",
     "@nuxt/fonts": "^0.7.2",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui-pro": "^1.4.1",
+    "@nuxthub/core": "^0.7.20",
     "@vueuse/nuxt": "^10.11.1",
     "nuxt": "^3.12.4"
   },
@@ -25,9 +26,7 @@
     "@nuxt/eslint": "^0.5.1",
     "@nuxthq/studio": "^2.0.3",
     "eslint": "^9.9.0",
-    "vue-tsc": "^2.0.29"
-  },
-  "resolutions": {
-    "@farnabaz/content-next": "3.1.0-20240930-111108-c719cb0"
+    "vue-tsc": "^2.0.29",
+    "wrangler": "^3.78.12"
   }
 }

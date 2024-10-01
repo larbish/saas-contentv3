@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxthq/studio',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@nuxthub/core'
   ],
 
   hooks: {
@@ -26,8 +27,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    // Temporary workaround for prerender regression. see https://github.com/nuxt/nuxt/issues/27490
-    '/': { prerender: true },
     '/api/search.json': { prerender: true },
     '/docs': { redirect: '/docs/getting-started', prerender: false }
   },
@@ -50,6 +49,17 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  // Documented in the nuxthub provider on content doc
+  hub: {
+    database: true
+  },
+  contentV3: {
+    database: {
+      type: 'd1',
+      binding: 'DB'
     }
   },
 
