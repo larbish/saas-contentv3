@@ -21,6 +21,7 @@ useSeoMeta({
   ogDescription: page.value.description
 })
 
+// TODO with nuxt-og-image wasm is bundled in server => results in > 1mb bundle on cloudflare
 // defineOgImageComponent(
 //   'OgImageSaas',
 //   {

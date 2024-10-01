@@ -5,7 +5,6 @@ const route = useRoute()
 
 const { data: post } = await useAsyncData(`post-${route.params.slug}`, async () => {
   const post = await queryCollection('posts').path(`/${route.params.slug}`).first()
-  console.log('post :', post)
   if (Array.isArray(post.authors) && post.authors.length) {
     post.authors = await Promise.all(post.authors.map((author) => {
       return queryCollection('authors').where('slug', '=', author).first() || []
@@ -37,14 +36,15 @@ useSeoMeta({
 })
 
 if (post.value.image?.src) {
-  const site = useSiteConfig()
+  const { site } = useAppConfig()
 
   const url = isRelative(post.value.image.src) ? joinURL(site.url, post.value.image.src) : post.value.image.src
   useSeoMeta({
     ogImage: url,
     twitterImage: url
   })
-} else {
+  // TODO with nuxt-og-image wasm is bundled in server => results in > 1mb bundle on cloudflare
+  // } else {
   // defineOgImageComponent(
   //   'OgImageSaas',
   //   {

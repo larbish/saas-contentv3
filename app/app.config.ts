@@ -1,4 +1,7 @@
 export default defineAppConfig({
+  site: {
+    url: 'https://saas-template.nuxt.dev'
+  },
   ui: {
     primary: 'sky',
     gray: 'cool',
